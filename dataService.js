@@ -29,6 +29,8 @@
          }
      ];
 
+     if (localStorage.getItem("isStorage")) { quotes = JSON.parse(localStorage.getItem("quotes")) }
+
      this.getQuotes = function () {
          return quotes;
      };
@@ -36,6 +38,8 @@
      this.addData = function (newQuote) {
          if (newQuote.text && newQuote.author) {
              quotes.push(newQuote);
+             localStorage.setItem("quotes", JSON.stringify(quotes))
+             localStorage.setItem("isStorage", true)
              return true;
          }
          return false;
@@ -43,9 +47,9 @@
 
      this.removeData = function (textToRemove) {
          for (var i = 0; i < quotes.length; i++) {
-             if (quotes[i].text.toLowerCase() === textToRemove.toLowerCase()) {
-                 quotes.splice(i--, 1);
+             if (quotes[i].id == id) quotes.splice(i, 1)
+                 localStorage.setItem("quotes", JSON.stringify(quotes))
+                 localStorage.setItem("isStorage", true)
              }
          }
-     };
  });
