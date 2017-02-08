@@ -14,9 +14,5 @@ angular.module('quoteBook').controller('quoteController', function($scope, dataS
             $scope.newQuoteText = '';
             $scope.newQuoteAuthor = '';
         }
-        return addQuote();
     };
-
-    $scope.filterText = {text: ''};
-    $scope.filterText = {author: ''};
 });
